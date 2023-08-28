@@ -7,16 +7,18 @@ trigger:
 - dependabot/npm_and_yarn/socket.io-parser-4.2.3
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '16.x'
   displayName: 'Install Node.js'
 
 - script: |
-    npm install -g @angular/cli
     npm install
-    ng build --prod
-  displayName: 'npm install and build'
+  displayName: 'npm install'
+
+- script: |
+    npm run build
+  displayName: 'npm build'
